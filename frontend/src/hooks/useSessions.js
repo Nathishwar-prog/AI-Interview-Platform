@@ -17,6 +17,7 @@ export const useActiveSessions = () => {
   const result = useQuery({
     queryKey: ["activeSessions"],
     queryFn: sessionApi.getActiveSessions,
+    retry: false,
   });
 
   return result;
@@ -26,6 +27,7 @@ export const useMyRecentSessions = () => {
   const result = useQuery({
     queryKey: ["myRecentSessions"],
     queryFn: sessionApi.getMyRecentSessions,
+    retry: false,
   });
 
   return result;
@@ -37,6 +39,7 @@ export const useSessionById = (id) => {
     queryFn: () => sessionApi.getSessionById(id),
     enabled: !!id,
     refetchInterval: 5000, // refetch every 5 seconds to detect session status changes
+    retry: false,
   });
 
   return result;
